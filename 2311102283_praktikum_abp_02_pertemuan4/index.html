@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Profil</title>
+</head>
+<body>
+
+    <h2>Data Profil</h2>
+
+    <button id="btnProfil">Tampilkan Profil</button>
+
+    <div id="hasil-profil"></div>
+
+    <script>
+        document.getElementById("btnProfil").addEventListener("click", function() {
+
+            fetch("data.php")
+                .then(response => response.json())
+                .then(data => {
+
+                    document.getElementById("hasil-profil").innerHTML =
+                        `Nama: ${data.nama} | 
+                        Pekerjaan: ${data.pekerjaan} | 
+                        Lokasi: ${data.lokasi}`;
+
+                })
+                .catch(error => {
+                    console.log("Terjadi error:", error);
+                });
+
+        });
+    </script>
+
+</body>
+</html>
